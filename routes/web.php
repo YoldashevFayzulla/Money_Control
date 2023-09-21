@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ProductsController;
+use App\Models\Products;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +22,12 @@ Route::get('stratification',[IndexController::class,'stratification'])->name('da
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+// recources
+Route::resource('Products',ProductsController::class);
+
 
 
 Route::middleware('auth')->group(function () {

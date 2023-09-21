@@ -12,7 +12,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+        $products=Products::all();
+        return view('dashboard_admin_product',compact('products'));
     }
 
     /**
@@ -60,6 +61,7 @@ class ProductsController extends Controller
      */
     public function destroy(Products $products)
     {
-        //
+       $products->delete();
+       return redirect()->back();
     }
 }
