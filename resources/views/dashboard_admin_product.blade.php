@@ -7,7 +7,32 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="width: 950px">
-            <button class="btn btn-outline-success mb-3">create</button>
+            <button class="btn btn-outline-success mb-3"  data-bs-toggle="modal" data-bs-target="#createModal" data-bs-whatever="@mdo">create</button>
+        {{-- create modal--}}
+            <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">create</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <form action="{{route('Products.store')}}" method="post">
+                        @csrf
+                        <div class="mb-3">
+                        <label for="recipient-name"  class="col-form-label">Product`s Name:</label>
+                        <input type="text" name="name" class="form-control" id="recipient-name">
+                        </div>
+                        <button type="button" class="btn btn-secondary text-black" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary text-black">save data</button>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+                </div>
+            </div>
+            {{-- end modal --}}
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-2 text-gray-900">
                 
@@ -25,7 +50,35 @@
                             <th>{{$product->name}}</th>
                             <th>
                             <div class="d-flex">
-                                <a class="btn btn-outline-warning m-1" href="{{'Products.edit'}}">edit</a>
+                                <button class="btn btn-outline-success mb-1"  data-bs-toggle="modal" data-bs-target="#editModal{{$product->id}}" data-bs-whatever="@mdo">edit</button>
+                                {{-- create modal--}}
+                                    <div class="modal fade" id="editModal{{$product->id}}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel"> edit</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <form action="{{route('Products.update',$product->id)}}" method="post">
+                                                @csrf
+                                                @method('PUT')
+
+                                                <div class="mb-3">
+                                                <label for="recipient-name"  class="col-form-label">Product`s Name:</label>
+                                                <input type="text" name="name" class="form-control" id="recipient-name" value="{{$product->name}}">
+                                                </div>
+                                                <button type="button" class="btn btn-secondary text-black" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary text-black">save data</button>
+                                            </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    {{-- end modal --}}
+                                    
                                 <form action="{{route('Products.destroy',$product->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
@@ -44,4 +97,5 @@
             </div>
         </div>
     </div>
+
 </x-app-layout>

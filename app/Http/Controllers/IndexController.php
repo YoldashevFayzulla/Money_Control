@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Products;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,8 @@ class IndexController extends Controller
             return view('dashboard_admin');
         }
         if ($user -> hasRole('customer') ) {
-            return view('dashboard_customer');
+            $products=Products::all();
+            return view('dashboard_customer',compact('products'));
         }
     }
 

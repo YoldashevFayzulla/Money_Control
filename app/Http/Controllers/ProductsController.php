@@ -29,7 +29,15 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+
+        Products::create([
+            'name'=>$request->name,
+        ]);
+
+        return redirect()->back()->with('success','data created');
     }
 
     /**
@@ -51,17 +59,34 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Products $products)
+    public function update(Request $request, string $id)
     {
-        //
+    
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+
+        $products=Products::find($id);
+
+        $products->update([
+            'name'=>$request->name,
+        ]);
+        
+        $products->save();
+
+
+
+        return redirect()->back()->with('success','data created');
+    
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Products $products)
+    public function destroy($id)
     {
-       $products->delete();
+        $item=Products::find($id);
+        $item->delete();
        return redirect()->back();
     }
 }
