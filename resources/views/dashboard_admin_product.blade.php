@@ -19,11 +19,18 @@
                     <div class="modal-body">
                     <form action="{{route('Products.store')}}" method="post">
                         @csrf
+
                         <div class="mb-3">
                         <label for="recipient-name"  class="col-form-label">Product`s Name:</label>
                         <input type="text" name="name" class="form-control" id="recipient-name">
                         </div>
-                        <button type="button" class="btn btn-secondary text-black" data-bs-dismiss="modal">Close</button>
+                        
+                        <div class="mb-3">
+                        <label for="recipient"  class="col-form-label">Product`s Price:</label>
+                        <input type="text" name="price" class="form-control" id="recipient">
+                        </div>
+
+                        <button type="button" class="btn btn-secondary text-black" data-bs-dismiss="modal">Close</button> 
                         <button type="submit" class="btn btn-primary text-black">save data</button>
                     </form>
                     </div>
@@ -40,6 +47,7 @@
                         <tr>
                             <th>id</th>
                             <th>name</th>
+                            <th>price</th>
                             <th>action</th>
                         </tr>
                         @foreach ($products as $product)
@@ -48,10 +56,11 @@
 
                             <th>{{$loop->index+1}}</th>
                             <th>{{$product->name}}</th>
+                            <th>{{$product->price}}</th>
                             <th>
                             <div class="d-flex">
                                 <button class="btn btn-outline-success mb-1"  data-bs-toggle="modal" data-bs-target="#editModal{{$product->id}}" data-bs-whatever="@mdo">edit</button>
-                                {{-- create modal--}}
+                                {{-- edit modal--}}
                                     <div class="modal fade" id="editModal{{$product->id}}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                         <div class="modal-content">
@@ -65,9 +74,15 @@
                                                 @method('PUT')
 
                                                 <div class="mb-3">
-                                                <label for="recipient-name"  class="col-form-label">Product`s Name:</label>
-                                                <input type="text" name="name" class="form-control" id="recipient-name" value="{{$product->name}}">
+                                                <label for="recipien"  class="col-form-label">Product`s Name:</label>
+                                                <input type="text" name="name" class="form-control" id="recipien" value="{{$product->name}}">
                                                 </div>
+
+                                                <div class="mb-3">
+                                                <label for="recipientl"  class="col-form-label">Product`s price:</label>
+                                                <input type="text" name="price" class="form-control" id="recipientl" value="{{$product->price}}">
+                                                </div>
+                                                
                                                 <button type="button" class="btn btn-secondary text-black" data-bs-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn btn-primary text-black">save data</button>
                                             </form>

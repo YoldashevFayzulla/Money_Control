@@ -21,7 +21,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+     dd('saas');
     }
 
     /**
@@ -31,10 +31,11 @@ class ProductsController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
+            'price' => 'required',
         ]);
-
         Products::create([
             'name'=>$request->name,
+            'price'=>$request->price,
         ]);
 
         return redirect()->back()->with('success','data created');
@@ -45,7 +46,7 @@ class ProductsController extends Controller
      */
     public function show(Products $products)
     {
-        //
+        dd();
     }
 
     /**
@@ -53,7 +54,7 @@ class ProductsController extends Controller
      */
     public function edit(Products $products)
     {
-        //
+        dd('saas');
     }
 
     /**
@@ -70,6 +71,7 @@ class ProductsController extends Controller
 
         $products->update([
             'name'=>$request->name,
+            'price'=>$request->price,
         ]);
         
         $products->save();

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductsController;
 use App\Models\Products;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,7 @@ Route::get('/', function () {
 
 // recources
 Route::resource('Products',ProductsController::class);
-
+Route::post('store',[OrderController::class,'store'])->name('order.store');
 
 
 Route::middleware('auth')->group(function () {
