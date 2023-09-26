@@ -1,51 +1,46 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Orders') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="width: 700px">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <a href="{{route('order.create')}}" class="btn btn-outline-success mb-2">create</a>
+
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 ">
-                    <center>
-                    {{ __("You're logged in as customer!") }}
-                    </center>
-                    <br>
-                    <br>
 
-                <form action="{{route('order.store')}}" method="post">
-                    @csrf
-
-
-                    <input type="hidden" name= "user_id"value="{{auth()->user()->id}}">
-                   
-                    <x-input-label>mahsulotlar va narxlari</x-lable-input>
-                   
-                        <select class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm form-control" name="product_id">
-                        @foreach ( $products as $product )
-                            <option value="{{$product->id}}"> {{$product->name   }}  '='  {{$product->price}} </option>
-                        @endforeach                 
-                    </select>
-
-
-                    
-                    <br>
-                   
-                    <x-input-label for='kg'>kilogram</x-lable-input>
-                   
-                    <input type="text" id="kg"name="kg" class=" border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">   
-
-                    
-                    <button class="btn btn-warning m-4" type="submit">yuborish</button>
-                </form>
-
-                    
-
-
+                <div class="p-6 text-gray-900">
+                    <table class="table">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Product</th>
+                            <th>Kg</th>
+                            <th>Delete</th>
+                        </tr>
+                        @foreach ($orders as $order)
+                        <tr>
+                            <th>{{$loop->index+1}}</th>
+                            <th>{{$order->user->name}}</th>
+                            <th>{{$order->product->name}}</th>
+                            <th>{{$order->kg}}</th>
+                            <th>
+                                <form action="{{route('order.delete',$order->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn-outline-danger btn"> del</button>
+                                </form>
+                            </th>
+                        </tr>    
+                        @endforeach
+                        
+                    </table>    
+                
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+

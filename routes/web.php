@@ -24,12 +24,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 // recources
 Route::resource('Products',ProductsController::class);
+Route::get('create',[OrderController::class,'create'])->name('order.create');
 Route::post('store',[OrderController::class,'store'])->name('order.store');
-
+Route::delete('delete/{id}',[OrderController::class,'delete'])->name('order.delete');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

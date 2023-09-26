@@ -59,7 +59,7 @@
                             <th>{{$product->price}}</th>
                             <th>
                             <div class="d-flex">
-                                <button class="btn btn-outline-success mb-1"  data-bs-toggle="modal" data-bs-target="#editModal{{$product->id}}" data-bs-whatever="@mdo">edit</button>
+                                <button class="btn btn-outline-warning mb-1"  data-bs-toggle="modal" data-bs-target="#editModal{{$product->id}}" data-bs-whatever="@mdo">edit</button>
                                 {{-- edit modal--}}
                                     <div class="modal fade" id="editModal{{$product->id}}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
