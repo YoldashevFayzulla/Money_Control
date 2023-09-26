@@ -16,12 +16,12 @@ class IndexController extends Controller
 
 
         $user = AUTH::user();
-        $orders=Order::latest()->get();
+        $orders=Order::latest()->paginate(25);
         if ($user -> hasRole('admin') ) {
             return view('dashboard_admin',compact('orders'));
         }
         if ($user -> hasRole('customer') ) {
-            $orders=Order::orderBy('created_at','desc')->get();
+            $orders=Order::orderBy('created_at','desc')->paginate(25);
             return view('dashboard_customer',compact('orders'));
         }
     }

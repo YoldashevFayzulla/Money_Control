@@ -26,7 +26,6 @@ class OrderController extends Controller
         return redirect()->route('dashboard');
     }       
     public function delete($id){
-
         $user=Order::find($id);
         $user->delete();
         return redirect()->back();
