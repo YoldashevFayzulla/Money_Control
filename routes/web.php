@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\OrderController;
@@ -28,9 +29,14 @@ Route::get('/', function () {
 // recources
 Route::resource('Products',ProductsController::class);
 Route::resource('User',UserController::class);
+
+
 Route::get('create',[OrderController::class,'create'])->name('order.create');
 Route::post('store',[OrderController::class,'store'])->name('order.store');
 Route::delete('delete/{id}',[OrderController::class,'delete'])->name('order.delete');
+
+//pdf
+Route::get('/generate-pdf', [PDFController::class,'generatePDF']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

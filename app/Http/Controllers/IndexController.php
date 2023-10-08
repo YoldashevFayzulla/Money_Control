@@ -14,7 +14,6 @@ class IndexController extends Controller
     {
         // dd('salom');
 
-
         $user = AUTH::user();
         $orders=Order::latest()->paginate(25);
         if ($user -> hasRole('admin') ) {

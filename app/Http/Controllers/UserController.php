@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $users=User::role('customer')->get();
-        return view('admin.index',compact('users'));
+        return view('users.index',compact('users'));
     }
 
     /**
