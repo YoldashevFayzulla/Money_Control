@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\UserController;
 use App\Models\Products;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,7 @@ Route::get('/', function () {
 
 // recources
 Route::resource('Products',ProductsController::class);
+Route::resource('User',UserController::class);
 Route::get('create',[OrderController::class,'create'])->name('order.create');
 Route::post('store',[OrderController::class,'store'])->name('order.store');
 Route::delete('delete/{id}',[OrderController::class,'delete'])->name('order.delete');
