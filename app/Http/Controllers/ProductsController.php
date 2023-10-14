@@ -62,7 +62,7 @@ class ProductsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-    
+
         $request->validate([
             'name' => 'required|string',
         ]);
@@ -73,13 +73,13 @@ class ProductsController extends Controller
             'name'=>$request->name,
             'price'=>$request->price,
         ]);
-        
+
         $products->save();
 
 
 
         return redirect()->back()->with('success','data created');
-    
+
     }
 
     /**
