@@ -17,7 +17,7 @@ class IndexController extends Controller
         $user = AUTH::user();
         $orders=Order::latest()->paginate(25);
         if ($user -> hasRole('admin') ) {
-            return view('dashboard_admin',compact('orders'));
+            return view('dashboard_admin_orders',compact('orders'));
         }
         if ($user -> hasRole('customer') ) {
             $orders=Order::orderBy('created_at','desc')->paginate(25);

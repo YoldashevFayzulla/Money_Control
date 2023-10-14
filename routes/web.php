@@ -37,6 +37,8 @@ Route::delete('delete/{id}',[OrderController::class,'delete'])->name('order.dele
 
 //pdf
 Route::get('/generate-pdf', [PDFController::class,'generatePDF']);
+//chart
+Route::get('users', 'UserChartController@index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -47,5 +49,3 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-
-//test chart

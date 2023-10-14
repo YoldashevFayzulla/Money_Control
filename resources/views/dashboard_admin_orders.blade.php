@@ -72,6 +72,12 @@
 {{--                    {{$orders->links()}}--}}
                 </div>
 
+
+                <div style="width: 50%">
+                    {!! $salesChart->container() !!}
+                </div>
+
+
             </div>
         </div>
     </x-app-layout>

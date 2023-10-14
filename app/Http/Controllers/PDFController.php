@@ -17,7 +17,14 @@ class PDFController extends Controller
         $today = now()->toDateString();
 
         // Fetch your table data here (e.g., from a database)
-        $tableData = Order::whereDate('created_at', '=', $today)->get();
+
+
+
+//        $tableData = Order::whereDate('created_at', '=', $today)->get();
+
+
+
+        $tableData = Order::all();
 
         // Generate the PDF
         $pdf = PDF::loadView('pdf.pdf', ['orders' => $tableData]);

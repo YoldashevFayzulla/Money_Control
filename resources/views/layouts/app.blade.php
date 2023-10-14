@@ -14,6 +14,16 @@
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
+
+        {{-- ChartScript --}}
+        @if($usersChart)
+            {!! $usersChart->script() !!}
+        @endif
+
+
+
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -34,4 +44,19 @@
             </main>
         </div>
     </body>
+
+
+
+    @extends('layouts.app')
+
+    @section('content')
+        <h1>Users Graphs</h1>
+
+        <div style="width: 50%">
+            {!! $usersChart->container() !!}
+        </div>
+    @endsection
+
+
+
 </html>
