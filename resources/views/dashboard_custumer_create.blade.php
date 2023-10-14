@@ -20,28 +20,28 @@
 
 
                     <input type="hidden" name= "user_id"value="{{auth()->user()->id}}">
-                   
+
                     <x-input-label>mahsulotlar va narxlari</x-lable-input>
-                   
+
                         <input class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm form-control" name="product_id">
                         {{-- @foreach ( $products as $product )
                             <option value="{{$product->id}}"> {{$product->name   }}  '='  {{$product->price}} </option>
                         @endforeach                  --}}
-                    
 
 
-                    
+
+
                     <br>
-                   
-                    <x-input-label for='kg'>kilogram</x-lable-input>
-                   
-                    <input type="text" id="kg"name="kg" class=" border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">   
 
-                    
+                    <x-input-label for='kg'>kilogram</x-lable-input>
+
+                    <input type="text" id="kg"name="kg" class=" border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+
+
                     <button class="btn btn-warning m-4" type="submit">yuborish</button>
                 </form>
 
-                    
+
 
 
                 </div>

@@ -11,7 +11,9 @@ class PDFController extends Controller
 {
     public function generatePDF()
     {
-//        dd('s');
+
+        //        dd('s');
+
         $today = now()->toDateString();
 
         // Fetch your table data here (e.g., from a database)
