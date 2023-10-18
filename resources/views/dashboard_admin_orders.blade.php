@@ -73,9 +73,9 @@
                 </div>
 
 
-                <div style="width: 50%">
-                    {!! $salesChart->container() !!}
-                </div>
+{{--                <div style="width: 50%">--}}
+{{--                    {!! $salesChart->container() !!}--}}
+{{--                </div>--}}
 
 
             </div>

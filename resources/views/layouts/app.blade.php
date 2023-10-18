@@ -18,9 +18,9 @@
 
 
         {{-- ChartScript --}}
-        @if($usersChart)
-            {!! $usersChart->script() !!}
-        @endif
+{{--        @if($usersChart)--}}
+{{--            {!! $usersChart->script() !!}--}}
+{{--        @endif--}}
 
 
 
@@ -44,21 +44,6 @@
             </main>
         </div>
     </body>
-
-
-
-
-
-
-    @extends('layouts.app')
-
-    @section('content')
-        <h1>Users Graphs</h1>
-
-        <div style="width: 50%">
-            {!! $usersChart->container() !!}
-        </div>
-    @endsection
 
 
 

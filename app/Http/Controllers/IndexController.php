@@ -12,16 +12,16 @@ class IndexController extends Controller
 
     public function stratification()
     {
-        // dd('salom');
-
+//         dd('salom');
         $user = AUTH::user();
-        $orders=Order::latest()->paginate(25);
-        if ($user -> hasRole('admin') ) {
-            return view('dashboard_admin_orders',compact('orders'));
+        $orders = Order::latest()->paginate(25);
+        if ($user->hasRole('admin')) {
+//              dd('salom');
+            return view('dashboard_admin_orders', compact('orders'));
         }
-        if ($user -> hasRole('customer') ) {
-            $orders=Order::orderBy('created_at','desc')->paginate(25);
-            return view('dashboard_customer',compact('orders'));
+        if ($user->hasRole('customer')) {
+            $orders = Order::orderBy('created_at', 'desc')->paginate(25);
+            return view('dashboard_customer', compact('orders'));
         }
     }
 
