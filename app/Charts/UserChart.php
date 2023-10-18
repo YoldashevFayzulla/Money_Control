@@ -3,6 +3,8 @@
 namespace App\Charts;
 
 use ConsoleTVs\Charts\Classes\Chartjs\Chart;
+use http\Env\Request;
+use Chartisan\PHP\Chartisan;
 
 class UserChart extends Chart
 {
@@ -15,4 +17,12 @@ class UserChart extends Chart
     {
         parent::__construct();
     }
+
+    public function hendler(Request $request): Chartisan
+    {
+
+    }
+
+
+
 }
